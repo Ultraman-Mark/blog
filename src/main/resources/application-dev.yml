@@ -1,0 +1,36 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/blog?serverTimezone=UTC
+      username: root
+      password: mysql123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+mybatis:
+  #配置SQL映射文件路径
+  mapper-locations: classpath:mapper/*.xml
+  #配置别名
+  type-aliases-package: com.example.blog.po
+  #驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+logging:
+  level:
+    root: info
+    com.example: debug
+
+  file:
+    name: log/log-dev.log
+
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
